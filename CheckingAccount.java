@@ -87,7 +87,7 @@ public class CheckingAccount implements HasMenu {
 
 	public void makeDeposit() {
 		System.out.print("How much to deposit: ");
-		double amount = getDouble();
+		double amount = this.getDouble();
 		balance += amount;
 	} // End makeDeposit()
 
