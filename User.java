@@ -1,6 +1,6 @@
 // User.java
 
-abstract class User implements HasMenu {
+abstract class User {
 	
 	String userName;
 	String pin;
