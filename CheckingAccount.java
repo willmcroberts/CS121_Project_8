@@ -6,7 +6,7 @@ public class CheckingAccount implements HasMenu {
 	double balance;
 
 	public static void main(String[] args) {
-		CheckingAccount.ca = new CheckingAccount();
+		CheckingAccount ca = new CheckingAccount();
 		ca.start();
 	} // End main
 
@@ -23,19 +23,19 @@ public class CheckingAccount implements HasMenu {
 		
 		System.out.println("");
 		System.out.println("0) Quit");
-		Systme.out.println("1) Check balance");
+		System.out.println("1) Check balance");
 		System.out.println("2) Make deposit");
 		System.out.println("3) Make withdrawl");
-		Sysytem.out.println("");
+		System.out.println("");
 		System.out.print("Enter option: ");
-		return input.nextLin();
+		return input.nextLine();
 	} // End menu()
 
 	public void start() {
 		boolean keepGoing = true;
 		while(keepGoing) {
 			String response = menu();
-			if (response.equals("0") {
+			if (response.equals("0")) {
 				keepGoing = false;
 			} else if (response.equals("1")) {
 				System.out.println("Checking balance...");
@@ -58,7 +58,7 @@ public class CheckingAccount implements HasMenu {
 
 	public String getBalanceString() {
 		String result = String.format("$%.02f", this.balance);
-		return resultl
+		return result;
 	} // End getBalanceString()
 
 	private double getDouble() {
@@ -67,9 +67,10 @@ public class CheckingAccount implements HasMenu {
 		double result = 0d;
 
 		try {
-			result = Double.parseDouble(sResults);
-		} catch (exception a) {
-			System.out.println("Invalid input. Changing to 0);
+			result = Double.parseDouble(sResult);
+		} catch (Exception a) {
+			System.out.println("");
+			System.out.println("Invalid input. Changing to 0.");
 			result = 0d;
 		} // End try
 
@@ -85,10 +86,14 @@ public class CheckingAccount implements HasMenu {
 	} // End setBalance()
 
 	public void makeDeposit() {
-		
+		System.out.print("How much to deposit: ");
+		double amount = getDouble();
+		balance += amount;
 	} // End makeDeposit()
 
 	public void makeWithdrawl() {
-		
+		System.out.print("How much to withdrawl: ");
+		double amount = getDouble();
+		balance -= amount;
 	} // End makeWithdrawl()
 } // End CheckingAccount class
