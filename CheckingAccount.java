@@ -78,11 +78,11 @@ public class CheckingAccount implements HasMenu {
 	} // End getDouble()
 
 	public double getBalance() {
-		return balance;
+		return this.balance;
 	} // End getBalance
 
 	public void setBalance(double balance) {
-		
+		this.balance = balance;
 	} // End setBalance()
 
 	public void makeDeposit() {
