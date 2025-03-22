@@ -15,8 +15,8 @@ abstract class User {
 	} // End login()
 
 	public boolean login(userName, pin) {
-		if (userName.equals(this.userName) {
-			if (pin.equals(this.pin) {
+		if (userName.equals(this.userName)) {
+			if (pin.equals(this.pin)) {
 				System.out.println("Login Successful");
 				return true;
 			} // Ed nested if statement

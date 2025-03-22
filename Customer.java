@@ -1,17 +1,19 @@
 // Cutomer.java
 import java.util.*;
+import java.io.*;
 
 public class Customer extends User {
-	CheckingAccount checking = new CheckingAccount;
-	SavingsAccount savings = new SavingsAccount;
+	CheckingAccount checking;
+	SavingsAccount savings;
 
 	public static void main(String[] args) {
-		Customer cust = new Customer;
+		Customer cust = new Customer();
 		cust.start();
 	} // End main
 
 	public Customer() {
-			
+		this.userName = admin;
+		this.pin = "0000";
 	} // End Customer()
 
 	public Customer(userName, pin) {
@@ -51,11 +53,16 @@ public class Customer extends User {
 	} // End menu()
 
 	public void changePin() {
-		
+		Scanner input = new Scanner(Systenm.in);
+		System.out.println("Change PIN: ");
+		String newPin = input.nexrLine();
+		this.setPin(newPin);
 	} // End changePin() 
 
 	public String getReport() {
-		
+		System.out.println("User: " + this.userName);
+		checking.checkBalance;
+		savings.checkBalance;
 	} // End getPeport
 
 	public void setPIN(String pin) {
