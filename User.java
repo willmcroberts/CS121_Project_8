@@ -23,7 +23,7 @@ abstract class User {
 		} // End if statement
 	} // End login()
 
-	public void setUserName(userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	} // End setUserName()
 
@@ -31,7 +31,7 @@ abstract class User {
 		return this.userName;
 	} // End getUserName()
 
-	public void setPin(pin) {
+	public void setPin(String pin) {
 		this.pin = pin;
 	} // End setPin()
 
