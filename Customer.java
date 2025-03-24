@@ -12,11 +12,11 @@ public class Customer extends User {
 	} // End main
 
 	public Customer() {
-		this.userName = admin;
+	//	this.userName = admin;
 		this.pin = "0000";
 	} // End Customer()
 
-	public Customer(userName, pin) {
+	public Customer(String userName, String pin) {
 	
 	} // End Customer()
 
@@ -24,13 +24,13 @@ public class Customer extends User {
 		boolean keepGoing = true;
 		while (keepGoing) {
 			String response = menu();
-			if (reponse.equals("0")) {
+			if (response.equals("0")) {
 				keepGoing = false;
-			} else if (response.equals("1") {
+			} else if (response.equals("1")) {
 				checking.start();
-			} else if (response.equals("2") {
+			} else if (response.equals("2")) {
 				savings.start();
-			} else if (response.equals("3") {
+			} else if (response.equals("3")) {
 				this.changePin();
 			} else {
 				System.out.println("");
@@ -40,7 +40,7 @@ public class Customer extends User {
 	} // End start()
 
 	public String menu() {
-		Scanner input = new Scanner(Systen.in);
+		Scanner input = new Scanner(System.in);
 
 		System.out.println("");
 		System.out.println("0) Exit");
@@ -53,22 +53,23 @@ public class Customer extends User {
 	} // End menu()
 
 	public void changePin() {
-		Scanner input = new Scanner(Systenm.in);
+		Scanner input = new Scanner(System.in);
 		System.out.println("Change PIN: ");
-		String newPin = input.nexrLine();
+		String newPin = input.nextLine();
 		this.setPin(newPin);
 	} // End changePin() 
 
 	public String getReport() {
 		System.out.println("User: " + this.userName);
-		checking.checkBalance;
-		savings.checkBalance;
+		checking.checkBalance();
+		savings.checkBalance();
+		return "";
 	} // End getPeport
 
 	public void setPIN(String pin) {
-		if (pin.matches("^\\d{4}$");
+		if (pin.matches("^\\d{4}$")) {
 			this.pin = pin;
-		else {
+		} else {
 			System.out.println("PIN must be a four digit number.\nSetting PIN to 0000");
 			this.pin = pin;
 		} // End if statment

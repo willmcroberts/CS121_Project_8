@@ -1,4 +1,5 @@
 // User.java
+import java.util.*;
 
 abstract class User {
 	
@@ -14,16 +15,17 @@ abstract class User {
 		return true;
 	} // End login()
 
-	public boolean login(userName, pin) {
+	public boolean login(String userName, String pin) {
 		if (userName.equals(this.userName)) {
 			if (pin.equals(this.pin)) {
 				System.out.println("Login Successful");
 				return true;
 			} // Ed nested if statement
 		} // End if statement
+		return false;
 	} // End login()
 
-	public void setUserName(userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	} // End setUserName()
 
@@ -31,16 +33,16 @@ abstract class User {
 		return this.userName;
 	} // End getUserName()
 
-	public void setPin(pin) {
+	public void setPin(String pin) {
 		this.pin = pin;
 	} // End setPin()
 
 	public String getPin() {
 		return this.pin;
 	} // End getPin()
-
+/*
 	abstract String getReport() {
 		
 		return;
-	} // End getReport	
+	} // End getReport	*/
 } // End User class
