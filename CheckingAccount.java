@@ -1,7 +1,8 @@
 // CheckingAccount.java
 import java.util.*;
+import java.io.*;
 
-public class CheckingAccount implements HasMenu {
+public class CheckingAccount implements HasMenu, serializable {
 	
 	double balance;
 
@@ -28,6 +29,7 @@ public class CheckingAccount implements HasMenu {
 		System.out.println("3) Make withdrawl");
 		System.out.println("");
 		System.out.print("Enter option: ");
+		
 		return input.nextLine();
 	} // End menu()
 

@@ -1,7 +1,8 @@
 // User.java
 import java.util.*;
+import java.io.*;
 
-abstract class User {
+abstract class User implements serializable {
 	
 	String userName;
 	String pin;

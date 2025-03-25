@@ -2,7 +2,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Customer extends User {
+public class Customer extends User implements serializable {
 	CheckingAccount checking;
 	SavingsAccount savings;
 
@@ -49,6 +49,7 @@ public class Customer extends User {
 		System.out.println("3) Change PIN");
 		System.out.println("");
 		System.out.print("Enter option: ");
+		
 		return input.nextLine();
 	} // End menu()
 
@@ -63,6 +64,7 @@ public class Customer extends User {
 		System.out.println("User: " + this.userName);
 		checking.checkBalance();
 		savings.checkBalance();
+		
 		return "";
 	} // End getPeport
 
