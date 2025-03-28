@@ -12,12 +12,16 @@ public class Customer extends User {
 	} // End main
 
 	public Customer() {
-	//	this.userName = admin;
+		this.userName = "admin";
 		this.pin = "0000";
+
 	} // End Customer()
 
 	public Customer(String userName, String pin) {
-	
+		this.userName = userName;
+		this.pin = pin;
+		this.checking = new CheckingAccount();
+		this.savings = new SavingsAccount();
 	} // End Customer()
 
 	public void start() {

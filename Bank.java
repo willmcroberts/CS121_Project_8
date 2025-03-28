@@ -21,24 +21,25 @@ public class Bank implements HasMenu {
 		customers.add(new Customer("Bob", "2222"));
 		customers.add(new Customer("Cindy", "3333"));
 	} // End loadSampleCustomers()
-
+/*
 	public void saveCustomers() {
+		Customer customer;
 		try {
-			FileOutputStream fo = new FileOutputStream("Customer.dat");
-			ObjectOutputStream abOut = new ObjectOutputStream(fo);
+			FileOutputStream fo = new FileOutputStream("customer.dat");
+			ObjectOutputStream obOut = new ObjectOutputStream(fo);
 			obOut.writeObject(Customer);
 			fo.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} // End try
 	} // End saveCustomers()
-
+*/
 	public void loadCustomers() {
 		Customer customer;
 		try {
-			FileInputStream fIn = new FileInputStream("Customer.dat");
+			FileInputStream fIn = new FileInputStream("customer.dat");
 			ObjectInputStream obIn = new ObjectInputStream(fIn);
-			customer = (customer)obIn.readObject();
+			customer = (Customer)obIn.readObject();
 			obIn.close();
 			fIn.close();
 		} catch (Exception e) {
@@ -69,7 +70,7 @@ public class Bank implements HasMenu {
 
 		Customer currentCustomer = null;
 		for (Customer Customer: customers) {
-			if (customer.login(userNameIn, pinIn)) {
+			if (Customer.login(userNameIn, pinIn)) {
 				currentCustomer = Customer;
 			} // End if statement
 		} // End for loop
@@ -101,7 +102,7 @@ public class Bank implements HasMenu {
 			if (response.equals("0")) {
 				keepGoing = false;
 			} else if (response.equals("1")) {
-				// Login as Customer
+				loginAsCustomer();
 			} else if (response.equals("2")) {
 				// Login as Admin
 			} else {
@@ -113,8 +114,8 @@ public class Bank implements HasMenu {
 	public void startAdmin() {
 		boolean keepGoing = true;
 		while (keepGoing) {
-			String response = Admin.menu();
-			if (reponse.equals("0")) {
+			Admin response = new Admin();
+			if (response.equals("0")) {
 				keepGoing = false;
 			} else if (response.equals("1")) {
 				// Give full customer report
