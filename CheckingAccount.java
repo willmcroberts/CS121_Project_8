@@ -2,7 +2,7 @@
 import java.util.*;
 import java.io.*;
 
-public class CheckingAccount implements HasMenu, serializable {
+public class CheckingAccount implements HasMenu {
 	
 	double balance;
 

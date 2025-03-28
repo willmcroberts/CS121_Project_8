@@ -2,7 +2,7 @@
 import java.util.*;
 import java.io.*;
 
-abstract class User implements serializable {
+abstract class User {
 	
 	String userName;
 	String pin;

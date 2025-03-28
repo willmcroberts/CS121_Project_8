@@ -1,10 +1,10 @@
 // Admin.java
-import javva.util.*;
+import java.util.*;
 
 public class Admin extends User {
 	public static void main(String[] args) {
 		Admin a = new Admin();
-		a.login()
+		a.login();
 	} // End main
 	
 	public Admin() {
@@ -13,7 +13,7 @@ public class Admin extends User {
 	} // End Admin()
 
 	public String menu() {
-		Scannner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 
 		System.out.println("");
 		System.out.println("0) Quit");
