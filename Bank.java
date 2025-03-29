@@ -2,18 +2,21 @@
 import java.util.*;
 import java.io.*;
 
-public class Bank implements HasMenu {
-	Admin admin;
-	ArrayList<Customer> customers = new ArrayList<>();
+public class Bank implements HasMenu, Serializable {
+	Admin admin = new Admin();
+	ArrayList<Customer> customers = new ArrayList<Customer>();
 
 	public Bank() {
 		this.loadSampleCustomers();
+		this.saveCustomers();
+		this.loadCustomers();
 		this.start();
-		//this.saveCustomers();
-	} // End Bank()
+		this.saveCustomers();
+		} // End Bank()
 
 	public static void main(String[] args) {
-		new Bank();
+		Bank bank = new Bank();
+		bank.start();
 	} // End main()
 
 	public void loadSampleCustomers() {
@@ -21,43 +24,51 @@ public class Bank implements HasMenu {
 		customers.add(new Customer("Bob", "2222"));
 		customers.add(new Customer("Cindy", "3333"));
 	} // End loadSampleCustomers()
-/*
+
 	public void saveCustomers() {
-		Customer customer;
 		try {
 			FileOutputStream fo = new FileOutputStream("customer.dat");
 			ObjectOutputStream obOut = new ObjectOutputStream(fo);
-			obOut.writeObject(Customer);
-			fo.close();
+			obOut.writeObject(customers);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} // End try
 	} // End saveCustomers()
-*/
+
+	class CustomerList extends ArrayList<Customer> {}
+
 	public void loadCustomers() {
 		Customer customer;
 		try {
 			FileInputStream fIn = new FileInputStream("customer.dat");
 			ObjectInputStream obIn = new ObjectInputStream(fIn);
-			customer = (Customer)obIn.readObject();
-			obIn.close();
-			fIn.close();
+			customers = (CustomerList)obIn.readObject();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} // End try
 	} // End loadCustomers()
 
 	public void reportAllCustomers() {
-	
+		for (Customer customer: customers) {
+			System.out.println(customer.getReport());
+		} // End for loop
 	} // End reportAllCustomers()
 
 	public void addUser() {
-	
+		Scanner input = new Scanner(System.in);
+		System.out.println("New Customer:");
+		System.out.print("Username: ");
+		String userName = input.nextLine();
+		System.out.print("PIN: ");
+		String pin = input.nextLine();
+		System.out.println("");
+		Customer newCustomer = new Customer(userName, pin);
+		customers.add(newCustomer);
 	} // End addUser()
 
 	public void applyInterest() {
 		for (Customer Customer: customers) {
-			
+			Customer.savings.calcInterest();
 		} // End for loop
 	} // End apply Interest()
 
@@ -76,6 +87,7 @@ public class Bank implements HasMenu {
 		} // End for loop
 
 		if (currentCustomer == null) {
+			System.out.println("");
 			System.out.println("Customer not found.");
 		} else {
 			currentCustomer.start();
@@ -104,7 +116,7 @@ public class Bank implements HasMenu {
 			} else if (response.equals("1")) {
 				loginAsCustomer();
 			} else if (response.equals("2")) {
-				// Login as Admin
+				startAdmin();
 			} else {
 				System.out.println("Invalid input");
 			} // End elif statements
@@ -113,14 +125,15 @@ public class Bank implements HasMenu {
 
 	public void startAdmin() {
 		boolean keepGoing = true;
+		keepGoing = admin.login();
 		while (keepGoing) {
-			Admin response = new Admin();
+			String response = admin.menu();
 			if (response.equals("0")) {
 				keepGoing = false;
 			} else if (response.equals("1")) {
-				// Give full customer report
+				reportAllCustomers();
 			} else if (response.equals("2")) {
-				// Add user
+				addUser();
 			} else if (response.equals("3")) {
 				applyInterest();
 			} else {

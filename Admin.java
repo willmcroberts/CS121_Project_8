@@ -31,6 +31,6 @@ public class Admin extends User {
 	} // End getReport()
 
 	public void start() {
-		// It said to make this but to leave it blank
+		
 	} // End start()
 } // End Admin class

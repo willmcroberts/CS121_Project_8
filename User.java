@@ -13,7 +13,14 @@ abstract class User {
 		userName = input.nextLine();
 		System.out.print("PIN: ");
 		pin = input.nextLine();
-		return true;
+		if (userName.equals("admin")) {
+			if (pin.equals("0000")) {
+				return true;
+			} // End nested if statement
+		} // End if statement
+		System.out.println("");
+		System.out.println("invalid login");
+		return false;
 	} // End login()
 
 	public boolean login(String userName, String pin) {
